@@ -59,9 +59,68 @@ $(function () {
     });
   };
 
+  const initializeCarousel = () => {
+    const $carousel = $('#projectCarousel');
+    
+    // Configurazione base del carosello
+    $carousel.carousel({
+      interval: 5000,
+      pause: 'hover',
+      keyboard: true,
+      wrap: true
+    });
+
+    // Gestione dei controlli
+    $('.carousel-control-prev').click(function() {
+      $carousel.carousel('prev');
+      return false;
+    });
+
+    $('.carousel-control-next').click(function() {
+      $carousel.carousel('next');
+      return false;
+    });
+
+    // Gestione keyboard
+    $(document).on('keydown', function(e) {
+      if (e.keyCode === 37) {
+        $carousel.carousel('prev');
+      }
+      if (e.keyCode === 39) {
+        $carousel.carousel('next');
+      }
+    });
+
+    // Gestione touch per mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const threshold = 50;
+
+    $carousel.on('touchstart', function(e) {
+      touchStartX = e.originalEvent.touches[0].clientX;
+    });
+
+    $carousel.on('touchmove', function(e) {
+      touchEndX = e.originalEvent.touches[0].clientX;
+    });
+
+    $carousel.on('touchend', function() {
+      const swipeLength = touchEndX - touchStartX;
+      
+      if (Math.abs(swipeLength) > threshold) {
+        if (swipeLength > 0) {
+          $carousel.carousel('prev');
+        } else {
+          $carousel.carousel('next');
+        }
+      }
+    });
+  };
+
   initializeNavbar();
   initializeSmoothScroll();
   initializeSkillsAnimation();
+  initializeCarousel();
 
   $("body").scrollspy({
     target: ".site-header",
@@ -108,6 +167,31 @@ $(function () {
     mobileCheck: function () {
       return false;
     },
+  });
+
+  // Inizializza il carosello
+  $('#projectCarousel').carousel({
+    interval: 5000, // Tempo tra le slide in millisecondi
+    pause: "hover" // Pausa al passaggio del mouse
+  });
+
+  // Gestione swipe su mobile
+  $('#projectCarousel').on('touchstart', function(event){
+    const xClick = event.originalEvent.touches[0].pageX;
+    $(this).one('touchmove', function(event){
+      const xMove = event.originalEvent.touches[0].pageX;
+      const sensitivityInPx = 5;
+
+      if(Math.floor(xClick - xMove) > sensitivityInPx){
+        $(this).carousel('next');
+      }
+      else if(Math.floor(xClick - xMove) < -sensitivityInPx){
+        $(this).carousel('prev');
+      }
+    });
+    $(this).on('touchend', function(){
+      $(this).off('touchmove');
+    });
   });
 });
 

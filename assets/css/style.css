@@ -388,43 +388,7 @@ body {
 
 .portfolio-item:hover .portfolio-item-info {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.portfolio-item-info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  z-index: 999;
-  opacity: 0;
-  width: 80%;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-  will-change: opacity, transform;
-}
-
-.section-portfolio .col-md-4:nth-last-child(-n + 3) .portfolio-item {
-  margin-bottom: 0;
-}
-
-.portfolio-item:before {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  transition: background-color 0.25s ease-in-out;
-  -moz-transition: background-color 0.25s ease-in-out;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  -o-transition: background-color 0.25s ease-in-out;
-  -ms-transition: background-color 0.25s ease-in-out;
-}
-
-.portfolio-item:hover:before {
-  background-color: rgba(33, 33, 33, 0.6);
+  transform: translate(-50%, -50%);
 }
 
 .portfolio-item-info {
@@ -432,11 +396,22 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
-  opacity: 0;
-  width: 80%;
+  width: 90%;
+  height: 90%;
+  background: linear-gradient(
+    to bottom,
+    rgba(100, 149, 237, 0.4),
+    rgba(173, 216, 230, 0.4)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
   text-align: center;
-  transition: opacity 0.25s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
 }
 
 .portfolio-item:hover .portfolio-item-info {
@@ -444,15 +419,21 @@ body {
 }
 
 .portfolio-item-info h4 {
-  margin: 0 0 10px;
+  color: rgb(6, 6, 6);
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+  font-size: 26px;
+  margin-bottom: 15px;
   font-weight: 700;
-  color: #fff;
 }
 
 .portfolio-item-info p {
-  color: #fff;
-  font-size: 14px;
-  margin-bottom: 15px;
+  color: rgb(14, 13, 13);
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+
+  font-size: 20px;
+  margin-bottom: 25px;
+  max-width: 80%;
+  line-height: 1.5;
 }
 
 .portfolio-item-info a {
@@ -678,4 +659,120 @@ a.icon-up-bg:hover {
   .site-footer {
     display: none;
   }
+}
+
+.carousel {
+  margin-bottom: 60px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-inner .item {
+  padding: 20px;
+}
+
+.carousel-inner .portfolio-item {
+  margin: 0 auto;
+  max-width: 800px;
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-inner .portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.carousel-control {
+  background: none;
+  width: 5%;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.carousel-indicators {
+  bottom: -40px;
+}
+
+.carousel-indicators li {
+  border-color: #1a237e;
+  margin: 0 4px;
+}
+
+.carousel-indicators .active {
+  background-color: #1a237e;
+  margin: 0 4px;
+}
+
+.project-links {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.project-links .btn-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Stile base per i pulsanti dei progetti */
+.project-links .btn {
+  background: white;
+  color: #1a237e;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  margin: 0;
+  min-width: 130px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Unifica gli stili hover dei pulsanti */
+.project-links .btn:hover,
+.carousel-inner .portfolio-item:hover .project-links .btn:hover {
+  background: #1a237e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Stato attivo dei pulsanti nel portfolio */
+.carousel-inner .portfolio-item:hover .project-links .btn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.carousel-inner .portfolio-item:hover .portfolio-item-info {
+  opacity: 1;
+  visibility: visible;
+}
+
+.carousel-inner .portfolio-item:hover .project-links .btn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.project-links .btn:hover {
+  background: #1a237e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
