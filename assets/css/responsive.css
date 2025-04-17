@@ -142,10 +142,6 @@
     height: 1px;
     width: 30px;
     background-color: #212121;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
   }
 
@@ -320,11 +316,11 @@
 
   .portfolio-item,
   .section-portfolio .col-md-4:nth-last-child(-n + 3) .portfolio-item {
-    margin-bottom: 15px;
+    margin-bottom: 0;
   }
 
   .section-portfolio .col-md-4:nth-last-child(-n + 2) .portfolio-item {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   .section-services .container {
@@ -369,7 +365,7 @@
 
   .portfolio-item,
   .section-portfolio .col-md-4:nth-last-child(-n + 3) .portfolio-item {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   .section-portfolio .btn {
@@ -392,5 +388,38 @@
 
   .site-footer .col-xs-offset-3 {
     margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .hero img {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    min-height: 100vh;
+  }
+  
+  .hero img {
+    height: 90vh;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi) {
+  .img-res {
+    image-rendering: -webkit-optimize-contrast;
   }
 }
