@@ -171,8 +171,8 @@ $(function () {
 
   // Inizializza il carosello
   $('#projectCarousel').carousel({
-    interval: 5000, // Tempo tra le slide in millisecondi
-    pause: "hover" // Pausa al passaggio del mouse
+    interval: 5000, 
+    pause: "hover" 
   });
 
   // Gestione swipe su mobile
@@ -211,7 +211,6 @@ function debounce(func, wait) {
 window.addEventListener(
   "scroll",
   debounce(() => {
-    // Existing scroll handlers
   }, 20)
 );
 
